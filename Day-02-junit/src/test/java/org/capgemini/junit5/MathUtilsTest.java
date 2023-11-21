@@ -4,6 +4,7 @@ package org.capgemini.junit5;
 
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -12,10 +13,11 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class MathUtilsTest {
 	MathUtils mathUtils;
 	@BeforeAll
-	static void beforeAllInit() {
+ void beforeAllInit() {
 		System.out.println("This needs to run before all");
 	}
 
