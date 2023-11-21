@@ -9,6 +9,7 @@ import org.junit.jupiter.api.condition.EnabledOnOs;
 import org.junit.jupiter.api.condition.OS;
 
 import static org.junit.Assume.assumeThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -20,6 +21,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.RepeatedTest;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class MathUtilsTest {
@@ -82,6 +84,7 @@ class MathUtilsTest {
 		
 		@Test 
 		@DisplayName("Area of circle")
+		@RepeatedTest(3)
 		void testComputeCircleArea() {
 			
 			assertEquals(314.1592653589793, 
@@ -94,6 +97,15 @@ class MathUtilsTest {
 		@Disabled
 		void testDisabled() {
 			fail("This test should be disabled");
+		}
+		@Test
+		@DisplayName("Multiply method")
+		void testMultiply() {
+			assertAll(
+					()-> assertEquals(4,mathUtils.multiply(2, 2),"should return the right product"),
+					()->assertEquals(0,mathUtils.multiply(0, 2),"should return the right product"),
+					()->assertEquals(-2,mathUtils.multiply(-1, 2),"should return the right product")
+					);
 		}
 }
 		
