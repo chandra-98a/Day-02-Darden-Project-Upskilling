@@ -8,10 +8,13 @@ import org.junit.jupiter.api.TestInstance;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class MathUtilsTest {
@@ -31,6 +34,7 @@ class MathUtilsTest {
 	}
 
 	    @Test
+	    @DisplayName("Adding two numbers")
         void testAdd() {
 		
 		int expected=5;
@@ -47,11 +51,19 @@ class MathUtilsTest {
 		}
 		
 		@Test 
+		@DisplayName("Area of circle")
 		void testComputeCircleArea() {
 			
 			assertEquals(314.1592653589793, 
 					mathUtils.computeCircleArea(10), 
 					"Should return right circle area");
+		}
+		
+		@Test
+		@DisplayName("Testing @disabled ")
+		@Disabled
+		void testDisabled() {
+			fail("This test should be disabled");
 		}
 }
 		
