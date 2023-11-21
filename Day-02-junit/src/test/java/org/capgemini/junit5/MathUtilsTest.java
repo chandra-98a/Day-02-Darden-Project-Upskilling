@@ -22,6 +22,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Tag;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class MathUtilsTest {
@@ -54,6 +55,7 @@ class MathUtilsTest {
 	 */
 	@Nested
 	@DisplayName("Adding two numbers")
+	@Tag("Math")
 	class AddTest {
 		@Test
 		void testAddingTwoPositives() {
