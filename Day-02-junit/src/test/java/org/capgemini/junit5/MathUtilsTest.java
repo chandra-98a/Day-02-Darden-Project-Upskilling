@@ -5,6 +5,8 @@ package org.capgemini.junit5;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -44,6 +46,7 @@ class MathUtilsTest {
 		
 	  }
 	    @Test
+	    @EnabledOnOs(OS.LINUX)
 		void testDivide() {
 	    	
 			assertThrows(ArithmeticException.class, () -> mathUtils.divide(1, 0), 
