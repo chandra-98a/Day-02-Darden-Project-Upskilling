@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
 class MathUtilsTest {
@@ -16,6 +17,10 @@ class MathUtilsTest {
 	@BeforeEach
 	void init() {
 		 mathUtils = new MathUtils();
+	}
+	@AfterEach
+	void cleanUp() {
+		System.out.println("Cleaning up....");
 	}
 
 	    @Test
