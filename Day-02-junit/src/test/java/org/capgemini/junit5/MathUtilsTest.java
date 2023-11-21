@@ -8,15 +8,18 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.condition.EnabledOnOs;
 import org.junit.jupiter.api.condition.OS;
 
+import static org.junit.Assume.assumeThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assumptions.*;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class MathUtilsTest {
@@ -35,20 +38,44 @@ class MathUtilsTest {
 		System.out.println("Cleaning up....");
 	}
 
+	/*
+	 * @Test
+	 * 
+	 * @DisplayName("Adding two numbers") void testAdd() {
+	 * 
+	 * int expected=5;
+	 * 
+	 * int actual= mathUtils.add(2, 3);
+	 * assertEquals(expected,actual,"The add method should add two values");
+	 * 
+	 * }
+	 */
+	@Nested
+	@DisplayName("Adding two numbers")
+	class AddTest {
+		@Test
+		void testAddingTwoPositives() {
+			assertEquals(2, mathUtils.add(1, 1), 
+					"Add method should return the sum of two numbers");
+		}
+		
+		@Test
+		void testAddingTwoNegatives() {
+			assertEquals(-2, mathUtils.add(-1, -1), 
+					"Add method should return the sum of two numbers");
+		}
+		
+		@Test
+		void testAddingAPositiveAndANegative() {
+			assertEquals(0, mathUtils.add(-1, 1), 
+					"Add method should return the sum of two numbers");
+		}
+	}
 	    @Test
-	    @DisplayName("Adding two numbers")
-        void testAdd() {
-		
-		int expected=5;
-		
-		int actual= mathUtils.add(2, 3);
-		assertEquals(expected,actual,"The add method should add two values");
-		
-	  }
-	    @Test
-	    @EnabledOnOs(OS.LINUX)
+	    //@EnabledOnOs(OS.LINUX)
+	    
 		void testDivide() {
-	    	
+	    	assumeTrue(true);
 			assertThrows(ArithmeticException.class, () -> mathUtils.divide(1, 0), 
 					"Divide should throw ArithmeticException when denominator is zero");
 		}
