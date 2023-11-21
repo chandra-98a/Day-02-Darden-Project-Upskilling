@@ -9,10 +9,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 class MathUtilsTest {
 	MathUtils mathUtils;
+	@BeforeAll
+	static void beforeAllInit() {
+		System.out.println("This needs to run before all");
+	}
 
 	@BeforeEach
 	void init() {
